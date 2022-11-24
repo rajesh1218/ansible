@@ -1,0 +1,5 @@
+git config --global user.name "rajesh1218"
+git config --global user.email "rajesh140694@gmail.com"
+
+
+git remote add origin https://github.com/rajesh1218/ansible.git
