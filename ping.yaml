@@ -1,0 +1,8 @@
+---
+- name: checking connectivity of woker
+  hosts: worker
+  tasks:
+  - name: run ping module
+    ping:
+...
+ 

@@ -1,0 +1,32 @@
+---
+- name: to display the website
+  hosts: worker
+  tasks:
+  - name: to dowload packages
+    yum:
+      name: httpd
+      state: latest
+  - name: to start the service
+    service:
+     name: httpd
+     state: started
+     enabled: true
+  - name: copy the files to var/www/html
+    copy:
+     src: index.html
+     dest: /var/www/html/index.html
+- name: verify the website in master node
+  hosts: localhost
+  become: no
+  tasks:
+  - name: verify site on worker1  
+    uri:
+     url: http://worker1
+     return_content: true
+  - name: verify site on worker2
+    uri:                 
+     url: http://worker2 
+     return_content: true 
+...
+
+      
