@@ -1,0 +1,10 @@
+---
+- name: varibles file
+  hosts: worker
+  vars:
+   username: raj
+  tasks:
+  - name: create user {{ username }}
+    user:
+      name: "{{ username }}"
+     

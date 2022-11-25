@@ -1,0 +1,10 @@
+---
+- name: create user
+  hosts: worker
+  vars:
+   user: rahul  
+  tasks:
+  - name: create user {{ user }}
+    user:
+     name: "{{ user }}"
+...
