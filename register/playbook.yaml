@@ -1,0 +1,17 @@
+---
+- name: register and debug
+  hosts: worker
+  tasks:
+  - name: run command shell module
+    shell:
+     cmd: echo item number {{ item }}
+    loop:
+    - one
+    - two
+    register: echo_result
+  - name: display result
+    debug:
+     var: echo_result
+...  
+
+

@@ -1,0 +1,16 @@
+---
+- name: create user using usergroups
+  hosts: worker
+  gather_facts: no
+  tasks:
+  - name: create users
+    user:
+     name: "{{ item.name }}"
+     state: present
+     groups: "{{ item.group }}"
+    loop:
+    - name: jim
+      group: wheel
+    - name: jake
+      group: wheel
+...

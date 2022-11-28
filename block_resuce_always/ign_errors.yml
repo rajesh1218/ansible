@@ -1,0 +1,14 @@
+---
+- name: ignore error task
+  hosts: worker
+  tasks:
+  - name: install package
+    yum:
+     name: dev
+     state: latest
+    ignore_errors: yes
+  - name: install package
+    yum:
+     name: tree
+     state: latest
+...

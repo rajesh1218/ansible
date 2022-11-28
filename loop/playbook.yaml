@@ -1,0 +1,19 @@
+---
+- name: packages installation via loops
+  hosts: worker
+  vars:
+   packages:
+    - httpd
+    - git
+  tasks:
+  - name: install packages
+    yum:
+     name: "{{ item }}"
+     state: installed
+    loop: "{{ packages }}"
+  - name: satrt the services
+    service:
+     name: httpd
+     state: started
+     enabled: true 
+... 

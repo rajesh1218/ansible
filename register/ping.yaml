@@ -1,0 +1,12 @@
+---
+- name: print module
+  hosts: worker
+  tasks:
+  - name: ping module
+    ping:
+    register: ping_result
+  - name: display result
+    debug:
+     msg: "the result of ping is {{ ping_result['ping'] }}"
+...
+

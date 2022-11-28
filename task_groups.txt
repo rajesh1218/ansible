@@ -1,0 +1,93 @@
+git token ===   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
+
+git remote -v
+git remote set-url origin https://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@github.com/rajesh1218/Kubernetes.git
+
+Inventory
+---------
+[worker]
+worker[1:2]
+
+---------------------------------------------
+
+[defaults]
+inventory = ./inventory
+remote_user = student
+ask_pass = false
+
+[privilege_escalation]                                                                                                                                
+become = True
+become_method = sudo
+become_user = root
+become_ask_pass = False
+
+
+ansible worker -m shell -a 'id raj'
+
+
+quay.io/gauravkumar9130/mywebapp
+quay.io/gauravkumar9130/myweb
+
+
+
+
+
+
+task_groprs
+ex:1
+---  
+- name: packages installation via loops
+  hosts: worker
+  vars:
+   packages:
+    - httpd
+    - git
+  tasks:
+  - name: install packages
+    yum:
+     name: "{{ item }}"
+     state: installed
+    loop: "{{ packages }}"                                                                                                                            
+  - name: satrt the services
+    service:
+     name: httpd
+     state: started
+     enabled: true
+...
+ex:2: create users and groups
+
+---
+- name: create user using usergroups
+  hosts: worker
+  gather_facts: no
+  tasks:
+  - name: create users
+    user:
+     name: "{{ item.name }}"
+     state: present
+     groups: "{{ item.group }}"
+    loop:
+    - name: jim
+      group: wheel
+    - name: jake
+      group: wheel
+... 
+
+
+ansible worker -m shell -a 'getent passwd jim jake'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
